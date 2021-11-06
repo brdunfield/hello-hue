@@ -9,16 +9,23 @@ export const LightList = (props) => {
   });
 
   const lightElements = lightList.map((light) => {
-    console.log(light);
+    //console.log(light);
     return (
-      <Light key={lightList.indexOf(light)} name={light.name}></Light>
+      <Light key={lightList.indexOf(light)} name={light.name} state={light.state} id={lightList.indexOf(light) + 1}></Light>
     )
-  })
+  });
+
+  // TODO if any lights are ON, state of  "All Lights" is on and vice versa
 
   return (
     <>
       <h2>Lights</h2>
-      <div>{lightElements}</div>
+      <div>
+        <ul>
+          <Light key="all" name="all">All Lights</Light>
+          {lightElements}
+        </ul>      
+      </div>
     </>
   )
 }
