@@ -16,8 +16,8 @@ export const Toggle = (props) => {
       body: JSON.stringify(req)
     }).then(response => response.json())
       .then(data => {
-        console.log(data)
-        if (!data.error)
+        //console.log(data)
+        if (data && !data.error)
           setOnOff(!onOff);
       });
   }

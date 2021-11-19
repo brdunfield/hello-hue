@@ -47,3 +47,7 @@ input:checked + .slider:before {
   -ms-transform: translateX(1rem);
   transform: translateX(1rem);
 }
+
+.brightness-slider::-webkit-slider-thumb {
+  @apply appearance-none w-6 h-6 bg-white cursor-pointer;
+}

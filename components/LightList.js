@@ -21,7 +21,7 @@ export const LightList = (props) => {
     <>
       <h2>Lights</h2>
       <div>
-        <ul>
+        <ul className="p-4">
           <Light key="all" name="all">All Lights</Light>
           {lightElements}
         </ul>      
