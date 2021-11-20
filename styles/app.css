@@ -51,3 +51,15 @@ input:checked + .slider:before {
 .brightness-slider::-webkit-slider-thumb {
   @apply appearance-none w-6 h-6 bg-white cursor-pointer;
 }
+
+.conicGradient {
+  @apply w-44 h-44 rounded-full absolute;
+  background: conic-gradient(red, orange, yellow, green,blue, purple, red);
+}
+.radialGradient {
+  @apply w-44 h-44 rounded-full absolute z-10;
+  background: radial-gradient(#FFF, transparent 80%);
+}
+.pickerPosition {
+  @apply w-6 h-6 rounded-full absolute z-20 bg-black;
+}
