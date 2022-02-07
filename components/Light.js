@@ -5,7 +5,7 @@ import { ColourPicker } from "./ui-components/ColourPicker";
 
 export const Light = (props) => {
   const {name, id, state, children} = props;
-  // console.log(state);
+  console.log(state);
 
   // parse state values
   const ct = (state && state.colormode) ? state.colormode : "ct";
@@ -15,7 +15,7 @@ export const Light = (props) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <li className="inline-block my-2 cursor-pointer w-full relative bg-gray-700">
+    <li id={"light-" + id} className="inline-block my-2 cursor-pointer w-full relative bg-gray-700">
       <div className="mb-2 p-2" onClick={() => setExpanded(!expanded)}>
         <span className="inline-block w-3/4 relative">{children || name}</span>
         <span className="float-right">

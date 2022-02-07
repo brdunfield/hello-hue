@@ -54,11 +54,11 @@ input:checked + .slider:before {
 
 .conicGradient {
   @apply w-44 h-44 rounded-full absolute;
-  background: conic-gradient(red, orange, yellow, green,blue, purple, red);
+  background: conic-gradient(red, orange, yellow, green,blue, indigo, purple, red);
 }
 .radialGradient {
   @apply w-44 h-44 rounded-full absolute z-10;
-  background: radial-gradient(#FFF, transparent 80%);
+  background: radial-gradient(#FFF, transparent 75%);
 }
 .pickerPosition {
   @apply w-6 h-6 rounded-full absolute z-20 bg-black;
