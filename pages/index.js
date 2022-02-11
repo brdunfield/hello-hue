@@ -1,13 +1,12 @@
 const Home = (props) => {
-  const { bridgeData } = props;
+  //const { bridgeData } = props;
   return (
     <>
       <div>Welcome to Hello-Hue!</div>
-      <div>{JSON.stringify(bridgeData)}</div>
     </>
   )
 }
-
+/*
 export const getServerSideProps = async() => {
   const bridgeData = await fetch("http://" + process.env.BRIDGEIP + "/api/" + process.env.BRIDGEUSER + "/lights/1")
     .then(response => response.json());
@@ -15,5 +14,6 @@ export const getServerSideProps = async() => {
     props: {bridgeData: bridgeData},
   };
 };
+*/
   
 export default Home;
