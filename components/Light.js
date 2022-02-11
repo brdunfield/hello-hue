@@ -5,14 +5,19 @@ import { ColourPicker } from "./ui-components/ColourPicker";
 
 export const Light = (props) => {
   const {name, id, state, children} = props;
-  console.log(state);
+  //console.log(state);
 
   // parse state values
   const ct = (state && state.colormode) ? state.colormode : "ct";
   const bri = (state && state.bri) ? state.bri : 254;
-  const hsv = (state && state.hue) ? {h: state.hue, s: state.sat, v:50} : {h: 0, s:0, v:100};
 
   const [expanded, setExpanded] = useState(false);
+  const [hsv, setHSVState] = useState((state && state.hue) ? {h: state.hue, s: state.sat, v:50} : {h: 0, s:0, v:100});
+
+  const handleHSVUpdate = function(newHSV) {
+    // update the hsv state so that the brightness slider will re-render on a hue change
+    setHSVState(newHSV);
+  }
 
   return (
     <li id={"light-" + id} className="inline-block my-2 cursor-pointer w-full relative bg-gray-700">
@@ -23,7 +28,7 @@ export const Light = (props) => {
         </span>
       </div>
       {expanded ? (
-        <ColourPicker hsv={hsv} id={id}></ColourPicker>
+        <ColourPicker hsv={hsv} id={id} handleHSVUpdate={handleHSVUpdate}></ColourPicker>
       ) : ""}
       <BrightnessSlider brightness={bri} hsv={hsv} ct={ct} id={id}></BrightnessSlider>
     </li>

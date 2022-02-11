@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export const ColourPicker = (props) => {
-  const {hsv, id} = props;
+  const {hsv, id, handleHSVUpdate} = props;
 
   // TODO - render colour picker dot at initial light hue value
 
@@ -44,6 +44,7 @@ export const ColourPicker = (props) => {
 
   const handleSetNewColour = async (e) => {
     setActive(false);
+    console.log("old hue: " + hue);
     // convert x and y to a hue based on angle  
     // relative center of the picker is at x=88, y=88
     const x = xpos + 12 - 88,
@@ -62,10 +63,11 @@ export const ColourPicker = (props) => {
     //console.log(angle/(Math.PI*2)* 65535);
 
     // call the API
+    const newHue = Math.round(angle/(Math.PI*2) * 65535)
     const req = {
       id: id,
       state: {
-        "hue": Math.round(angle/(Math.PI*2) * 65535),
+        "hue": newHue,
         "sat": saturation
       }
     }
@@ -74,9 +76,8 @@ export const ColourPicker = (props) => {
       body: JSON.stringify(req)
     }).then(response => response.json())
       .then(data => {
-        setHue(Math.round(angle/(Math.PI*2) * 65535));
-        //console.log(saturation);
-        hsv.h = Math.round(angle/(Math.PI*2) * 65535);
+        setHue(newHue);
+        handleHSVUpdate({h: newHue, s: saturation, v: hsv.v});
       });
   }
 

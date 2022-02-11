@@ -10,10 +10,10 @@ export default async function handler(req, res) {
     body: JSON.stringify(body.state)
   }).then(response => response.json())
   .then(data => {
-    console.log(data);
     if(data[0].error)
       res.status(200).json({ error: data[0].error.description });
-    else
+    else {
       res.status(200).json({ statusUpdated: true });
+    }
   });
 }

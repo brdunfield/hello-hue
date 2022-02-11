@@ -3,7 +3,6 @@ import {Light} from "./Light";
 export const LightList = (props) => {
   const {lights} = props;
 
-
   const lightList = Object.keys(lights).map((key) => {
     return lights[key];
   });
