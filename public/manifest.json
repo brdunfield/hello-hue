@@ -1,6 +1,6 @@
 {
   "name": "Hello Hue",
-  "short_name": "hello hue",
+  "short_name": "helloHue",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#FFFFFF",
