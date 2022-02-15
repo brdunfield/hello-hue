@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export const BrightnessSlider = (props) => {
-  const {brightness, hsv, ct, id} = props;
+  const {brightness, handleBrightnessUpdate, hsv, ct, id} = props;
 
   const[bri, setBri] = useState(brightness);
 
@@ -18,7 +18,7 @@ export const BrightnessSlider = (props) => {
       id: id,
       state: {
         "bri": parseInt(bri),
-        "on": true
+        "on": (bri > 0)
       }
     }
     const resp = await fetch("/api/hue", {
@@ -28,7 +28,7 @@ export const BrightnessSlider = (props) => {
       .then(data => {
         //console.log(data)
         if (data && !data.error)
-        setBri(bri);
+        handleBrightnessUpdate(bri);
       });
   }
   return (

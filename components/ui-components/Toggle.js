@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 
 export const Toggle = (props) => {
-  const {id, active} = props;
-
-  const[onOff, setOnOff] = useState(active);
+  const {id, active, handleOnOffUpdate} = props;
 
   // need a server side method to send the actual command
   const toggleLightState = async () => {
     const req = {
       id: id,
-      state: {"on": !onOff}
+      state: {"on": !active}
     }
     const resp = await fetch("/api/hue", {
       method: 'POST',
@@ -18,14 +16,14 @@ export const Toggle = (props) => {
       .then(data => {
         //console.log(data)
         if (data && !data.error)
-          setOnOff(!onOff);
+          handleOnOffUpdate(!active);
       });
   }
 
   return (
     <>
       <label className=" switch relative inline-block">
-        <input type="checkbox" className="w-0 h-0 opacity-0" checked={onOff} onChange={() => toggleLightState()}/>
+        <input type="checkbox" className="w-0 h-0 opacity-0" checked={active} onChange={() => toggleLightState()}/>
         <span className="slider bg-white"></span>
       </label>
     </>
